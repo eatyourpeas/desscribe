@@ -1,110 +1,166 @@
 <script>
   import { ref } from "vue";
 
-  export default {
-    setup(){
+  const colours = [
+        "red",
+        "orange",
+        "yellow",
+        "olive",
+        "green",
+        "teal",
+        "blue",
+        "violet",
+        "purple",
+        "pink",
+        "brown",
+        "grey",
+        "black",
+      ];
 
-      const items = ref([
-        { id: 0, title: "aura", category: "review", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 5, title: "acalculia", category: "cognitive", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 6, title: "aphasia", category: "cognitive", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 7, title: "attention impairment", category: "cognitive", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 8, title: "deja vu/jamais vu", category: "cognitive", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 9, title: "dissociation", category: "cognitive", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 10, title: "dysphasia", category: "cognitive", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 11, title: "hallucinations", category: "cognitive", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 12, title: "illusions", category: "cognitive", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 13, title: "memory impairment", category: "cognitive", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 14, title: "neglect", category: "cognitive", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 15, title: "forced thinking", category: "cognitive", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 16, title: "responsiveness impairment", category: "cognitive", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 17, title: "agitation", category: "emotional or affective", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 18, title: "anger", category: "emotional or affective", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 19, title: "anxiety", category: "emotional or affective", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 20, title: "crying (dacrystic)", category: "emotional or affective", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 21, title: "fear", category: "emotional or affective", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 22, title: "laughing (gelastic)", category: "emotional or affective", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 23, title: "paranoia", category: "emotional or affective", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 24, title: "pleasure", category: "emotional or affective", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 25, title: "asystole", category: "autonomic", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 26, title: "bradycardia", category: "autonomic", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 27, title: "erection", category: "autonomic", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 28, title: "flushing", category: "autonomic", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 29, title: "gastrointestinal", category: "autonomic", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 30, title: "hyper/hypoventilation", category: "autonomic", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 31, title: "nausea/vomiting", category: "autonomic", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 32, title: "pallor", category: "autonomic", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 33, title: "palpitations", category: "autonomic", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 34, title: "piloerection", category: "autonomic", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 35, title: "respiratory changes", category: "autonomic", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 36, title: "tachycardia", category: "autonomic", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 37, title: "aggression", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 38, title: "eye-blinking", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 39, title: "head-nodding", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 40, title: "manual", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 41, title: "oro-facial", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 42, title: "pedaling", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 43, title: "pelvic thrusting", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 44, title: "perseveration", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 45, title: "running (cursive)", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 46, title: "sexual", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 47, title: "undressing", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 48, title: "vocalisation/speech", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 49, title: "walking", category: "automatisms", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 50, title: "dysarthria", category: "motor", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 51, title: "dystonic", category: "motor", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 52, title: "fencer's posture", category: "motor", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 53, title: "incoordination", category: "motor", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 54, title: "jacksonian", category: "motor", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 55, title: "paralysis", category: "motor", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 56, title: "paresis", category: "motor", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 57, title: "versive", category: "motor", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 58, title: "auditory", category: "sensory", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 59, title: "gustatory", category: "sensory", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 60, title: "hot-cold sensations", category: "sensory", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 61, title: "olfactory", category: "sensory", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 62, title: "somatosensory", category: "sensory", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 63, title: "vestibular", category: "sensory", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 64, title: "visual", category: "sensory", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 65, title: "left", category: "laterality", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 66, title: "right", category: "laterality", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
-        { id: 67, title: "bilateral", category: "laterality", list: 4, color: '#' + Math.floor(Math.random()*16777215).toString(16) },
+  const randomColour = () => {
+        const randomInt = Math.floor(Math.random() * 13);
+        return colours[randomInt];
+      }
+
+  const items = ref([
+        { id: 0, title: "acalculia", category: "cognitive", narrative: 0, color: randomColour()},
+        { id: 1, title: "aphasia", category: "cognitive", narrative: 0, color: randomColour()},
+        { id: 2, title: "attention impairment", category: "cognitive", narrative: 0, color: randomColour()},
+        { id: 3, title: "deja vu/jamais vu", category: "cognitive", narrative: 0, color: randomColour()},
+        { id: 4, title: "dissociation", category: "cognitive", narrative: 0, color: randomColour()},
+        { id: 5, title: "dysphasia", category: "cognitive", narrative: 0, color: randomColour()},
+        { id: 6, title: "hallucinations", category: "cognitive", narrative: 0, color: randomColour()},
+        { id: 7, title: "illusions", category: "cognitive", narrative: 0, color: randomColour()},
+        { id: 8, title: "memory impairment", category: "cognitive", narrative: 0, color: randomColour()},
+        { id: 9, title: "neglect", category: "cognitive", narrative: 0, color: randomColour()},
+        { id: 10, title: "forced thinking", category: "cognitive", narrative: 0, color: randomColour()},
+        { id: 11, title: "responsiveness impairment", category: "cognitive", narrative: 0, color: randomColour()},
+        { id: 12, title: "agitation", category: "emotional or affective", narrative: 0, color: randomColour()},
+        { id: 13, title: "anger", category: "emotional or affective", narrative: 0, color: randomColour()},
+        { id: 14, title: "anxiety", category: "emotional or affective", narrative: 0, color: randomColour()},
+        { id: 15, title: "crying (dacrystic)", category: "emotional or affective", narrative: 0, color: randomColour()},
+        { id: 16, title: "fear", category: "emotional or affective", narrative: 0, color: randomColour()},
+        { id: 17, title: "laughing (gelastic)", category: "emotional or affective", narrative: 0, color: randomColour()},
+        { id: 18, title: "paranoia", category: "emotional or affective", narrative: 0, color: randomColour()},
+        { id: 19, title: "pleasure", category: "emotional or affective", narrative: 0, color: randomColour()},
+        { id: 20, title: "asystole", category: "autonomic", narrative: 0, color: randomColour()},
+        { id: 21, title: "bradycardia", category: "autonomic", narrative: 0, color: randomColour()},
+        { id: 22, title: "erection", category: "autonomic", narrative: 0, color: randomColour()},
+        { id: 23, title: "flushing", category: "autonomic", narrative: 0, color: randomColour()},
+        { id: 24, title: "gastrointestinal", category: "autonomic", narrative: 0, color: randomColour()},
+        { id: 25, title: "hyper/hypoventilation", category: "autonomic", narrative: 0, color: randomColour()},
+        { id: 26, title: "nausea/vomiting", category: "autonomic", narrative: 0, color: randomColour()},
+        { id: 27, title: "pallor", category: "autonomic", narrative: 0, color: randomColour()},
+        { id: 28, title: "palpitations", category: "autonomic", narrative: 0, color: randomColour()},
+        { id: 29, title: "piloerection", category: "autonomic", narrative: 0, color: randomColour()},
+        { id: 30, title: "respiratory changes", category: "autonomic", narrative: 0, color: randomColour()},
+        { id: 31, title: "tachycardia", category: "autonomic", narrative: 0, color: randomColour()},
+        { id: 32, title: "aggression", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 33, title: "eye-blinking", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 34, title: "head nodding", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 35, title: "manual", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 36, title: "orofacial", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 37, title: "pedaling", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 38, title: "pelvic thrusting", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 39, title: "perseveration", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 40, title: "running (cursive)", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 41, title: "sexual", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 42, title: "undressing", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 43, title: "vocalisation/speech", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 44, title: "walking", category: "automatisms", narrative: 0, color: randomColour()},
+        { id: 45, title: "dysarthria", category: "motor", narrative: 0, color: randomColour()},
+        { id: 46, title: "dystonic", category: "motor", narrative: 0, color: randomColour()},
+        { id: 47, title: "fencer's posture", category: "motor", narrative: 0, color: randomColour()},
+        { id: 48, title: "incoordination", category: "motor", narrative: 0, color: randomColour()},
+        { id: 49, title: "jacksonian", category: "motor", narrative: 0, color: randomColour()},
+        { id: 50, title: "paralysis", category: "motor", narrative: 0, color: randomColour()},
+        { id: 51, title: "paresis", category: "motor", narrative: 0, color: randomColour()},
+        { id: 52, title: "versive", category: "motor", narrative: 0, color: randomColour()},
+        { id: 53, title: "auditory", category: "sensory", narrative: 0, color: randomColour()},
+        { id: 54, title: "gustatory", category: "sensory", narrative: 0, color: randomColour()},
+        { id: 55, title: "hot/cold sensations", category: "sensory", narrative: 0, color: randomColour()},
+        { id: 56, title: "olfactory", category: "sensory", narrative: 0, color: randomColour()},
+        { id: 57, title: "somatosensory", category: "sensory", narrative: 0, color: randomColour()},
+        { id: 58, title: "vestibular", category: "sensory", narrative: 0, color: randomColour()},
+        { id: 59, title: "visual", category: "sensory", narrative: 0, color: randomColour()},
+        { id: 60, title: "left", category: "laterality", narrative: 0, color: randomColour()},
+        { id: 61, title: "right", category: "laterality", narrative: 0, color: randomColour()},
+        { id: 62, title: "bilateral", category: "laterality", narrative: 0, color: randomColour()},
+        { id: 63, title: "aura", category: "custom", narrative: 0, color: randomColour()},
       ]);
 
-      const getList = (list) => {
-        return items.value.filter((item) => item.list == list);
+  export default {
+    setup(){
+      
+      let narrativesNumber = 0;
+
+      const getAllItems = () => {
+        return items.value;
+      }
+
+      const getItemByNarrative = (narrative) => {
+        return items.value.filter((item) => item.narrative == narrative);
       };
+
+      const getCountOfNarratives = () => {
+        return items.value.filter((item)=> item.narrative > 0).length;
+      }
+
+      const getCountByNarrative = (narrative) => {
+        return items.value.filter((item)=> item.narrative == narrative).length;
+      }
       
       const getListByCategory = (category) => {
         return items.value.filter((item) => item.category == category);
       };
       
-      const getListByCategoryAndList = (category, list) => {
-        return items.value.filter((item) => (item.category == category) && (item.list == list));
+      const getListByNarrative = (narrative) => {
+        return items.value.filter((item) => item.narrative == narrative);
+      };
+      
+      const getListByCategoryAndNarrative = (category, narrative) => {
+        return items.value.filter((item) => (item.category == category) && (item.narrative == narrative));
       };
 
+      const saveItemToItems = (item_value) => {
+        const itemsLength = items.value.length;
+        const newItem = { id: itemsLength+1, title: item_value, category: "custom", narrative: 0, color: randomColour() }
+        items.value.push(newItem)
+      }
+
       const startDrag = (event, item) => {
-        console.log(item);
         event.dataTransfer.dropEffect="move";
         event.dataTransfer.effectAllowed="move";
         event.dataTransfer.setData("itemID", item.id);
-        event.dataTransfer.setDragImage(null, 0, 0);
       }
 
-      const onDrop = (event, list) => {
+      const onDrop = (event, narrative) => {
         const itemID = event.dataTransfer.getData('itemID');
         const item = items.value.find((item)=> item.id == itemID);
-        item.list = list;
+        item.narrative = narrative;
       }
 
       return {
-        getList,
+        getAllItems,
+        getAllItems,
         getListByCategory,
-        getListByCategoryAndList,
+        getListByNarrative,
+        getListByCategoryAndNarrative,
+        getItemByNarrative,
+        getCountByNarrative,
+        getCountOfNarratives,
+        saveItemToItems,
         startDrag,
         onDrop
       }
 
+    },
+    name: 'custom',
+    data(){
+      return {
+        custom: '',
+        steps: 1
+      }
     }
   }
 
@@ -112,68 +168,172 @@
 </script>
 
 <template>
-  <div class="grid-container">
-    <div class="column-1">
-      <div class="container" @drop="onDrop($event, 0)" @dragenter.prevent @dragover.prevent>
-        <label>Semiology</label>
-        <div class="dropzone">
-          <div v-for="item in getList(0)" :key="item.id" class="drag-el" draggable="true" @dragstart="startDrag($event, item)" v-bind:style="{ 'background-color': item.color }">
-            {{item.title}}
-          </div>
-        </div>
-      </div>
+  <div class="ui container">
+    <div class="ui header">
+      <h2>Epilepsy12 DESSCRIBE model</h2>
     </div>
-    <div class="column-2">
-      <div class="white-container" @drop="onDrop($event, 4)" @dragenter.prevent @dragover.prevent>
-        <div class="zone">
-          <label>Cognitive</label>
-          <div class="dropzone" >
-            <span v-for="item in getListByCategoryAndList('cognitive', 4)" :key="item.id" class="drag-el" draggable="true" @dragstart="startDrag($event, item)" v-bind:style="{ 'background-color': item.color }">
-              {{item.title}}
-            </span>
+    <div class="ui padded grid container">
+
+      <div class="sixteen wide centered row">
+
+        <div class="ui green message">
+          <div class="header">
+          Semiology
           </div>
-          <label>Emotional or Affective</label>
-          <div class="dropzone" >
-            <span v-for="item in getListByCategoryAndList('emotional or affective', 4)" :key="item.id" class="drag-el" draggable="true" @dragstart="startDrag($event, item)" v-bind:style="{ 'background-color': item.color }">
-              {{item.title}}
-            </span>
+          Seizures have a narrative. For each step in the narrative, drag and drop words which best describe that step. When there is a new step in the narrative, add a new one.
+          <div class="content">
+            <div class="ui button" v-on:click="steps++">add step...</div>
           </div>
-        </div>
-        <div class="zone">
-          <label>Autonomic</label>
-          <div class="dropzone" >
-            <span v-for="item in getListByCategoryAndList('autonomic', 4)" :key="item.id" class="drag-el" draggable="true" @dragstart="startDrag($event, item)" v-bind:style="{ 'background-color': item.color }">
-              {{item.title}}
-            </span>
-          </div>
-          <label>Automatisms</label>
-          <div class="dropzone" >
-            <span v-for="item in getListByCategoryAndList('automatisms', 4)" :key="item.id" class="drag-el" draggable="true" @dragstart="startDrag($event, item)" v-bind:style="{ 'background-color': item.color }">
-              {{item.title}}
-            </span>
-          </div>
-        </div>
-        <div class="zone">
-          <label>Motor</label>
-          <div class="dropzone" >
-            <span v-for="item in getListByCategoryAndList('motor', 4)" :key="item.id" class="drag-el" draggable="true" @dragstart="startDrag($event, item)" v-bind:style="{ 'background-color': item.color }">
-              {{item.title}}
-            </span>
-          </div>
-          <label>Sensory</label>
-          <div class="dropzone" >
-            <span v-for="item in getListByCategoryAndList('sensory', 4)" :key="item.id" class="drag-el" draggable="true" @dragstart="startDrag($event, item)" v-bind:style="{ 'background-color': item.color }">
-              {{item.title}}
-            </span>
+          <div class="ui ordered steps">
+            <div v-if="steps > 0">
+              <div v-for="index in steps" :key="index" @drop="onDrop($event, index)" @dragenter.prevent @dragover.prevent>
+                <div class="step">
+                  <div class="content">
+                    <div class="dropzone">
+                      <div v-for="item in getListByNarrative(index)" :key="item.id" class="ui item.color label" draggable="true" @dragstart="startDrag($event, item)">
+                          <div v-if="item.title">
+                            {{item.title}}
+                          </div>
+                          <div v-else>
+                            Drag a description word into this narrative step
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-else>
+              <div class="step">
+                <div class="content">
+                  
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="zone">
-          <label>Laterality</label>
-          <div class="dropzone" >
-            <span v-for="item in getListByCategoryAndList('laterality', 4)" :key="item.id" class="drag-el" draggable="true" @dragstart="startDrag($event, item)" v-bind:style="{ 'background-color': item.color }">
-              {{item.title}}
-            </span> 
+
+      </div>
+
+      <div class="row">
+
+        <!-- <div class="row"> -->
+
+          <div class="eight wide column">
+            <div class="ui orange message" @drop="onDrop($event, 0)" @dragenter.prevent @dragover.prevent>
+              <label>Cognitive</label>
+              <div class="dropzone" >
+                <span v-for="item in getListByCategoryAndNarrative('cognitive', 0)" :key="item.id" class="ui label" id="label" draggable="true" @dragstart="startDrag($event, item)" >
+                  {{item.title}}
+                </span>
+              </div>
+            </div>
           </div>
+
+          <div class="eight wide column">
+            <div class="ui yellow message">
+              <label>Emotional or Affective</label>
+              <div class="dropzone" >
+                <span v-for="item in getListByCategoryAndNarrative('emotional or affective', 0)" :key="item.id" class="ui item.color label" id="label" draggable="true" @dragstart="startDrag($event, item)">
+                  {{item.title}}
+                </span>
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="eight wide column">
+          <div class="ui olive message">
+            <label>Autonomic</label>
+            <div class="dropzone" >
+              <span v-for="item in getListByCategoryAndNarrative('autonomic', 0)" :key="item.id" class="ui item.color label" id="label" draggable="true" @dragstart="startDrag($event, item)">
+                {{item.title}}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="eight wide column">
+          <div class="ui teal message">
+            <label>Automatisms</label>
+            <div class="dropzone" >
+              <span v-for="item in getListByCategoryAndNarrative('automatisms', 0)" :key="item.id" class="ui item.color label" id="label" draggable="true" @dragstart="startDrag($event, item)">
+                {{item.title}}
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+          <div class="eight wide column">
+            <div class="ui blue message">
+              <label>Motor</label>
+              <div class="dropzone" >
+                <span v-for="item in getListByCategoryAndNarrative('motor', 0)" :key="item.id" class="ui item.color label" id="label" draggable="true" @dragstart="startDrag($event, item)">
+                  {{item.title}}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="eight wide column">
+            <div class="ui violet message">
+              <label>Sensory</label>
+              <div class="dropzone" >
+                <span v-for="item in getListByCategoryAndNarrative('sensory', 0)" :key="item.id" class="ui item.color label" id="label" draggable="true" @dragstart="startDrag($event, item)">
+                  {{item.title}}
+                </span>
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+      <div class="row">
+
+          <div class="eight wide column">
+            <div class="ui purple message">
+              <label>Laterality</label>
+              <div class="dropzone" >
+                <span v-for="item in getListByCategoryAndNarrative('laterality', 0)" :key="item.id" class="ui item.color label" id="label" draggable="true" @dragstart="startDrag($event, item)">
+                  {{item.title}}
+                </span> 
+              </div>
+            </div>
+          </div>
+
+          <div class="eight wide column">
+            <div class="ui pink message">
+              <label>Custom</label>
+              <div class="dropzone" >
+                <span v-for="item in getListByCategoryAndNarrative('custom', 0)" :key="item.id" class="ui item.color label" id="label" draggable="true" @dragstart="startDrag($event, item)">
+                  {{item.title}}
+                </span> 
+              </div>
+            </div>
+          </div>
+
+      </div>
+    
+      <div class="centered row">
+        <div class="ui segment">
+            <form 
+              class="ui form"
+              @submit.prevent="()=>{
+                saveItemToItems(this.custom);
+                this.custom='';
+              }">
+              <div class="inline field">
+                <label for='custom'>Enter New Custom Term:</label>
+                <input class="ui input" v-model="custom" name="custom" ref="custom"/>
+              </div>
+              <button type="submit" class="ui button">Add</button>
+            </form>
         </div>
       </div>
     </div>
@@ -186,75 +346,12 @@
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  background-color: grey;
-  font-weight: normal;
-  color: #2c3e50;
+  background-color: white;
+  color: black;
 }
 
-.container {
-  border-radius: 12.5px;
-  min-width: 400px;
-  width: 50%;
-  margin: 5px auto;
-  background-color: #ADEFD1FF;
-  padding: 10px;
-  min-height: 100px; 
+#label {
+  margin-bottom: 5px;
 }
-
-.container > label {
-  color: #00203FFF;
-}
-
-.white-container {
-  min-width: 50%;
-  margin: 25px auto;
-  background-color: transparent;
-  padding: 10px;
-  min-height: 100px;
-}
-
-.dropzone {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.drag-el {
-  color: white;
-  font-size: small;
-  padding: 10px;
-  border-radius: 250px;
-  width: fit-content;
-  margin: 5px;
-  -webkit-background-clip: padding-box; 
-  -moz-background-clip:    padding; 
-  background-clip:         padding-box;
-}
-
-.drag-el:nth-last-of-type(1) {
-  margin-bottom: 0;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 10px;
-  background-color: #00203FFF;
-  padding: 10px;
-}
-
-
-
-.column-1 {
-  flex: 50%;
-}
-.column-2 {
-  flex: 50%;
-}
-
-label {
-  color: #ADEFD1FF;
-}
-
 
 </style>

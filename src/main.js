@@ -1,4 +1,5 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import SuiVue from "semantic-ui-vue";
+import App from "./App.vue";
 
-createApp(App).mount('#app')
+createApp(App).use(SuiVue).mount("#app");
