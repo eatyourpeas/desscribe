@@ -1,5 +1,6 @@
 import { createApp } from "vue";
-import SuiVue from "semantic-ui-vue";
 import App from "./App.vue";
+import router from "./router";
 
-createApp(App).use(SuiVue).mount("#app");
+const app = createApp(App).use(router);
+app.mount("#app");
