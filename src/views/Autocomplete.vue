@@ -223,9 +223,13 @@ const items = ref([
         </div>
 
         <div class="row">
+          <div class="ui segment">
+            <h5 class="header">
+              Semiology Text
+            </h5>
             <div v-if="allWords.length > 0">
-              <span v-for="word, index in allWords" :key="index">
-                <div class="ui label" v-if="word.match">
+              <span v-for="word, index in allWords" :key="index" >
+                <div class="ui label semiologyPhrases" v-if="word.match" :class="word.colour">
                   {{word.isCapitalised ? capitalizeFirstLetter(word.word) : word.word}}
                 </div>
                 <span v-else>
@@ -238,6 +242,7 @@ const items = ref([
                 Awaiting semiology...
               </p>
             </div>
+          </div>
         </div>
 
         <div class="row" v-if="allWords.length > 0">
@@ -245,10 +250,14 @@ const items = ref([
         </div>
 
         <div class="row">
-          <a v-for="word, index in returnAllSelectedKeywords(allWords)" class="ui horizontal label" :class="word.colour" :key="index" v-on:click="()=>allWords.splice(index, 1)">
-            {{word.word}}
-            <i class="delete icon"></i>
-          </a>
+          <div class="ui segment">
+            <h5 class="header">
+              Selected key words
+            </h5>
+            <div v-for="word, index in returnAllSelectedKeywords(allWords)" class="ui horizontal label" :class="word.colour" :key="index">
+              {{word.word}}
+            </div>
+          </div>
         </div>
 
         <div class="row">
@@ -336,3 +345,8 @@ const items = ref([
     </div>
   </div>
 </template>
+<style scoped>
+.semiologyPhrases{
+  margin: 0px 5px 5px 5px;
+}
+</style>
