@@ -260,6 +260,10 @@ const items = ref([
           </div>
         </div>
 
+        
+        <div class="ui divider"></div>
+        
+
         <div class="row">
           <div class="ui padded container">
             <div class="ui centered red message">
