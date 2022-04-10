@@ -27,7 +27,7 @@ const routes = [
   },
 ];
 const router = createRouter({
-  history: createWebHistory("http://localhost/"),
+  history: createWebHistory(),
   routes,
 });
 export default router;
