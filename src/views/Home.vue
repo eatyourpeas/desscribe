@@ -12,15 +12,11 @@
                 There are 2 apps:
               </p>
               <li>
-                <a href="/draganddrop">
-                Drag and Drop - Users drag and drop key words to create a narrative of each seizure.
-                </a>
-                <p>
-                </p>
+                <router-link to="/draganddrop"><a class="item">Drag and Drop - Users drag and drop key words to create a narrative of each seizure.</a></router-link>
               </li>
-              <a href="/autocomplete"><li>
-                Autocomplete - Users type a narrative of the episode. Keyword are automatically collected and highlighted.
-              </li></a>
+              <li>
+              <router-link to="/autocomplete"><a class="item">Autocomplete - Users type a narrative of the episode. Keyword are automatically collected and highlighted.</a></router-link>
+              </li>
             </div>
           </div>
        </div>
