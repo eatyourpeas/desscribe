@@ -229,25 +229,27 @@ const items = ref([
           </div>
         </div>
 
-        <div class="row">
-          <div class="ui segment">
-            <h5 class="header">
-              Semiology Text
-            </h5>
-            <div v-if="allWords.length > 0">
-              <span v-for="word, index in allWords" :key="index" >
-                <div class="ui label semiologyPhrases" v-if="word.match" :class="word.colour">
-                  {{word.isCapitalised ? capitalizeFirstLetter(word.word) : word.word}}
-                </div>
-                <span v-else>
-                    {{word.isCapitalised ? capitalizeFirstLetter(word.word) : word.word}}{{word.isFinal ? ". " : " "}}
+        <div class="sixteen column row">
+          <div class="ui container">
+            <div class="ui secondary left aligned segment">
+              <h5 class="header">
+                Semiology Text
+              </h5>
+              <div v-if="allWords.length > 0">
+                <span v-for="word, index in allWords" :key="index" >
+                  <div class="ui label semiologyPhrases" v-if="word.match" :class="word.colour">
+                    {{word.isCapitalised ? capitalizeFirstLetter(word.word) : word.word}}
+                  </div>
+                  <span v-else>
+                      {{word.isCapitalised ? capitalizeFirstLetter(word.word) : word.word}}{{word.isFinal ? ". " : " "}}
+                  </span>
                 </span>
-              </span>
-            </div>
-            <div v-else>
-              <p>
-                Awaiting semiology...
-              </p>
+              </div>
+              <div v-else>
+                <p>
+                  Awaiting semiology text...
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -256,7 +258,7 @@ const items = ref([
           <div class="red ui icon button" v-on:click="()=>allWords.splice(-1)"><i class="icon trash"></i>Remove last word</div>
         </div>
 
-        <div class="row">
+        <div class="row" v-if="allWords.length > 0">
           <div class="ui segment">
             <h5 class="header">
               Selected key words
@@ -273,85 +275,93 @@ const items = ref([
 
         <div class="row">
           <div class="ui padded container">
-            <div class="ui centered red message">
+            <div class="ui centered green message">
               <p>
                 These are all suggestions of key words to use in describing events.
               </p>
             </div>
           </div>
         </div>
-        <div class="ui segment">
-          <!-- <div class="ui red message"> -->
-            <h5 class="header">
-              Cognitive
-            </h5>
-            <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('cognitive')" :key="word.id" :class="word.color">
-              {{word.title}}
-            </div>
-          <!-- </div> -->
-        </div>
-        <div class="ui segment">
-          <!-- <div class="ui orange message"> -->
-            <h5 class="header">
-              Emotional or Affective
-            </h5>
-            <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('emotional or affective')" :key="word.id" :class="word.color">
-              {{word.title}}
-            </div>
-          <!-- </div> -->
-        </div>
-        <div class="ui segment">
-          <!-- <div class="ui yellow message"> -->
-            <h5 class="header">
-              Autonomic
-            </h5>
-            <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('autonomic')" :key="word.id" :class="word.color">
-              {{word.title}}
-            </div>
-          <!-- </div> -->
-        </div>
-        <div class="ui segment">
-          <!-- <div class="ui olive message"> -->
-            <h5 class="header">
-              Motor
-            </h5>
-            <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('motor')" :key="word.id" :class="word.color">
-              {{word.title}}
-            </div>
-          <!-- </div> -->
-        </div>
-        <div class="ui segment">
-          <!-- <div class="ui green message"> -->
-            <h5 class="header">
-              Sensory
-            </h5>
-            <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('sensory')" :key="word.id" :class="word.color">
-              {{word.title}}
-            </div>
-          <!-- </div> -->
-        </div>
-        <div class="ui segment">
-          <!-- <div class="ui teal message"> -->
-            <h5 class="header">
-              Laterality
-            </h5>
-            <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('laterality')" :key="word.id" :class="word.color">
-              {{word.title}}
-            </div>
-          <!-- </div> -->
-        </div>
-        <div class="ui segment">
-          <!-- <div class="ui blue message"> -->
-            <h5>
-              Custom
-            </h5>
-            <div class="row">
-              <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('custom')" :key="word.id" :class="word.color">
+        
+        <div class="sixteen column row">
+          <div class="ui segment">
+              <h5 class="header">
+                Cognitive
+              </h5>
+              <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('cognitive')" :key="word.id" :class="word.color">
                 {{word.title}}
               </div>
-            </div>
-          <!-- </div> -->
+          </div>
         </div>
+
+        <div class="sixteen column row">
+          <div class="ui segment">
+              <h5 class="header">
+                Emotional or Affective
+              </h5>
+              <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('emotional or affective')" :key="word.id" :class="word.color">
+                {{word.title}}
+              </div>
+          </div>
+        </div>
+
+        <div class="sixteen column row">
+          <div class="ui segment">
+              <h5 class="header">
+                Autonomic
+              </h5>
+              <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('autonomic')" :key="word.id" :class="word.color">
+                {{word.title}}
+              </div>
+          </div>
+        </div>
+
+        <div class="sixteen column row">
+          <div class="ui segment">
+              <h5 class="header">
+                Motor
+              </h5>
+              <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('motor')" :key="word.id" :class="word.color">
+                {{word.title}}
+              </div>
+          </div>
+        </div>
+
+        <div class="sixteen column row">
+          <div class="ui segment">
+              <h5 class="header">
+                Sensory
+              </h5>
+              <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('sensory')" :key="word.id" :class="word.color">
+                {{word.title}}
+              </div>
+          </div>
+        </div>
+
+        <div class="sixteen column row">
+          <div class="ui segment">
+              <h5 class="header">
+                Laterality
+              </h5>
+              <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('laterality')" :key="word.id" :class="word.color">
+                {{word.title}}
+              </div>
+          </div>
+        </div>
+
+        <div class="sixteen column row">
+          <div class="ui segment">
+              <h5>
+                Custom
+              </h5>
+              <div class="row">
+                <div class="ui horizontal label" v-for="word in returnAllKeywordsByCategory('custom')" :key="word.id" :class="word.color">
+                  {{word.title}}
+                </div>
+              </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
