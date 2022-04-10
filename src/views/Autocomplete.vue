@@ -140,14 +140,56 @@ const items = ref([
           //  test if first letter is capitalised
           const firstLetter = newVal.charAt(0);
           const result = wordMatch(trimmedLowerCaseWord);
-          this.allWords.push({
-            word: trimmedLowerCaseWord,
-            match: result.match,
-            isFinal: newVal.slice(-1)==="." ? true : false,
-            isCapitalised: firstLetter === firstLetter.toUpperCase(),
-            colour: result.match ? result.item.color : undefined,
-          });
-          this.inputValue = "";
+
+          if (result.match){
+            // matches a keyword
+            this.allWords.push({
+                word: trimmedLowerCaseWord,
+                match: result.match,
+                isFinal: newVal.slice(-1)==="." ? true : false,
+                isCapitalised: firstLetter === firstLetter.toUpperCase(),
+                colour: result.match ? result.item.color : undefined,
+              });
+          } else {
+            // no keyword match
+            if (this.allWords.length > 0){
+              // there are previous words in the array - check the last for a match also
+              const lastWord = this.allWords[this.allWords.length-1];
+              const twoWordResult = wordMatch(lastWord.word + " " + trimmedLowerCaseWord);
+              if (twoWordResult.match){
+                // match with last 2 words - replace the last word in the array with this 2 word match
+                this.allWords.pop();
+                this.allWords.push(
+                  {
+                    word: lastWord.word + " " + trimmedLowerCaseWord,
+                    match: twoWordResult.match,
+                    isFinal: newVal.slice(-1)==="." ? true : false,
+                    isCapitalised: firstLetter === firstLetter.toUpperCase(),
+                    colour: twoWordResult.match ? twoWordResult.item.color : undefined,
+                  }
+                );
+              } else {
+                // no two word matches - add this word to the array
+                this.allWords.push({
+                  word: trimmedLowerCaseWord,
+                  match: result.match,
+                  isFinal: newVal.slice(-1)==="." ? true : false,
+                  isCapitalised: firstLetter === firstLetter.toUpperCase(),
+                  colour: result.match ? result.item.color : undefined,
+                });
+              }
+            } else {
+              // no matches - add word to array
+              this.allWords.push({
+                word: trimmedLowerCaseWord,
+                match: result.match,
+                isFinal: newVal.slice(-1)==="." ? true : false,
+                isCapitalised: firstLetter === firstLetter.toUpperCase(),
+                colour: result.match ? result.item.color : undefined,
+              });
+            }
+          }
+          this.inputValue = ""; // reset input to empty
         }
       }
     }
