@@ -140,6 +140,11 @@
         item.narrative = narrative;
       }
 
+      const stringIsEmpty = (stringToCheck) => {
+        console.log('string is:' + stringToCheck);
+        return stringToCheck === '';
+      }
+
       return {
         getAllItems,
         getAllItems,
@@ -151,7 +156,8 @@
         getCountOfNarratives,
         saveItemToItems,
         startDrag,
-        onDrop
+        onDrop,
+        stringIsEmpty
       }
 
     },
@@ -172,39 +178,40 @@
     <div class="ui container">
       <div class="ui padded grid container">
 
-        <div class="fourteen wide centered row">
+        <div class="sixteen wide row">
 
-          <div class="ui green message">
+          <div class="ui green left aligned message">
             <div class="header">
             Semiology
             </div>
             Seizures have a narrative. For each step in the narrative, drag and drop words which best describe that step. When there is a new step in the narrative, add a new one.
             <div class="content">
-              <div class="ui button" v-on:click="steps++">add step...</div>
-            </div>
-            <div class="ui ordered steps">
-              <div v-if="steps > 0">
-                <div v-for="index in steps" :key="index" @drop="onDrop($event, index)" @dragenter.prevent @dragover.prevent>
-                  <div class="step">
-                    <div class="content">
-                      <div class="dropzone">
-                        <div v-for="item in getListByNarrative(index)" :key="item.id" class="ui item.color label" draggable="true" @dragstart="startDrag($event, item)">
-                            <div v-if="item.title">
-                              {{item.title}}
+              <div class="ui grid">
+                <div class="row">
+                  <div class="ui button" v-on:click="()=>steps++">add step...</div>
+                </div>
+                <div class="row">
+                  <div class="ui ordered steps">
+                    <div v-if="steps > 0">
+                      <div v-for="index in steps" :key="index" @drop="onDrop($event, index)" @dragenter.prevent @dragover.prevent>
+                        <div class="step" :class="index === steps ? 'active' : 'completed'">
+                          <div class="content">
+                            <div class="description">
+                              <div class="dropzone">
+                                <div v-if="getListByNarrative(index).length < 1">
+                                  Drag a description word into this narrative step
+                                </div>
+                                <div v-else>
+                                  <div v-for="item in getListByNarrative(index)" :key="item.id" class="ui item.color label" draggable="true" @dragstart="startDrag($event, item)">
+                                      {{ item.title }}
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div v-else>
-                              Drag a description word into this narrative step
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div v-else>
-                <div class="step">
-                  <div class="content">
-                    
                   </div>
                 </div>
               </div>
